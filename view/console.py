@@ -11,14 +11,14 @@ def menu() -> int:  # Выбор пункта меню
         print(input_error)
 
 
-def show_notes(book: NoteJournal):  # Отображение контактов
+def show_notes(book: NoteJournal) -> list[str:str]:  # Отображение всех заметок
     if book.notes:
         print('\n' + '=' * 67)
         for note in book.notes:
             print(note)
         print('=' * 67 + '\n')
     else:
-        print(note_error)
+        print(journal_error)
 
 
 def print_message(message: str):  # Вывод сообщения о статусе операции
@@ -28,9 +28,9 @@ def print_message(message: str):  # Вывод сообщения о стату�
     print('=' * length + '\n')
 
 
-def input_contact(message: str) -> dict[str, str]:  # Присвоение данных?
+def input_note(message: str) -> dict[str:str]:  # Присвоение данных?
     print(message)
-    new = Note(input(new_note[0]), input(new_note[1]), input(new_note[2]))
+    new = Note(input(new_note[0]), input(new_note[1]))
     return new
 
 
@@ -38,7 +38,7 @@ def input_return(message: str) -> str:  # Вывод сообщения
     return input(message)
 
 
-def prepare_to_save_file(book: NoteJournal):  # Преобразование листа справочника к формату для записи в текстовый файл
+def prepare_to_save_file(book: NoteJournal):  # Преобразование листа журнала к формату для записи в текстовый файл
     new = []
     count = 0
     for note in book.notes:

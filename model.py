@@ -13,6 +13,9 @@ class Note:
     def for_search(self):
         return f'{self.name} {self.comment}'.lower()
 
+    def get(self):
+        return self.name
+
 
 class NoteJournal:
 
