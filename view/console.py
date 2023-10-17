@@ -6,7 +6,7 @@ def menu() -> int:  # Выбор пункта меню
     print(main_menu)
     while True:
         choice = input(menu_choice)
-        if choice.isdigit() and 0 < int(choice) < 9:
+        if choice.isdigit() and 0 < int(choice) < 8:
             return int(choice)
         print(input_error)
 

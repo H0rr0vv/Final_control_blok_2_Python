@@ -14,7 +14,7 @@ class Note:
         return f'{self.name} {self.comment}'.lower()
 
     def get(self):
-        return self.name
+        return self
 
 
 class NoteJournal:
@@ -33,14 +33,6 @@ class NoteJournal:
     def add_note(self, new: Note):  # Добавление записи
         self.notes.append(new)
 
-    def search(self, word: str) -> list[Note]:  # Поиск записи
-        result = []
-        for note in self.notes:
-            if word.lower() in note.for_search():
-                result.append(note)
-                break
-        return result
-
     def change(self, index: int, new: dict[str, str]):  # Изменение записи
         for note in self.notes:
             if index == note.uid:
@@ -49,18 +41,14 @@ class NoteJournal:
 
     def del_note(self, index: int):  # Удаление записи
         self.notes.pop(int(index) - 1)
-        """     uid = 1
-        for item in phone_book:
-            item['id'] = int(uid)
-            uid += 1 """
         return self.notes
 
-    def save_file(self, new: list):     # Сохранение
+    def save_file(self, new: list):  # Сохранение
         with open(self.path, 'w', encoding='UTF-8') as file:
             for note in new:
                 file.write(note + '\n')
 
-    def get_name(self, uid):        # Переименование
+    def get_name(self, uid):  # Переименование
         old_name = str
         for note in self.notes:
             if note.uid == uid:
