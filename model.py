@@ -13,9 +13,6 @@ class Note:
     def for_search(self):
         return f'{self.name} {self.comment}'.lower()
 
-    def get(self):
-        return self
-
 
 class NoteJournal:
 
@@ -36,8 +33,8 @@ class NoteJournal:
     def change(self, index: int, new: dict[str, str]):  # Изменение записи
         for note in self.notes:
             if index == note.uid:
-                note.name = new.get('name') if not new.get('name') else note.name
-                note.comment = new.get('comment') if not new.get('comment') else note.comment
+                note.name = new.get('name') if note.name != new.get('name') else note.name
+                note.comment = new.get('comment') if note.name != new.get('comment') else note.comment
 
     def del_note(self, index: int):  # Удаление записи
         self.notes.pop(int(index) - 1)
